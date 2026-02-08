@@ -1,0 +1,146 @@
+✅ 📁 FINAL PROJECT STRUCTURE (Single Root)
+qr-attendance-system/
+│
+├── server.js
+├── package.json
+├── README.md
+│
+└── public/
+    ├── qr.html
+    ├── auto.html
+    └── login.html
+
+
+👉 public folder = frontend
+👉 server.js = backend
+👉 Everything inside one main folder
+
+✅ 🟢 server.js (IMPORTANT CHANGE)
+
+Add this line to serve frontend files:
+
+app.use(express.static("public"));
+
+
+So full basic server start part looks like:
+
+app.use(express.json());
+app.use(cors());
+app.use(express.static("public"));
+
+
+Now:
+
+http://LAPTOP-IP:3000/qr.html
+
+
+will work directly 🎉
+
+No need npx serve.
+
+🚀 HOW TO RUN (For GitHub README)
+1️⃣ Clone the repository
+git clone https://github.com/yourusername/qr-attendance-system.git
+cd qr-attendance-system
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Start MongoDB
+
+Make sure MongoDB is running:
+
+mongod
+
+4️⃣ Start the server
+node server.js
+
+
+You should see:
+
+MongoDB connected
+Server running on port 3000
+
+5️⃣ Create test user (Run once)
+
+Open in browser:
+
+http://LAPTOP-IP:3000/create
+
+6️⃣ Show QR on Laptop
+
+Open:
+
+http://LAPTOP-IP:3000/qr.html
+
+
+QR will display 💻
+
+7️⃣ Mobile Scan
+
+📱 Scan QR
+First time → Login
+Second time → Auto attendance
+
+🌐 How to Find LAPTOP-IP
+
+Windows:
+
+ipconfig
+
+
+Look for:
+
+IPv4 Address
+
+
+Example:
+
+192.168.1.5
+
+
+Use that instead of localhost.
+
+🗄️ Database Info
+
+Database Name:
+
+attendanceDB
+
+
+Collection:
+
+users
+
+📦 package.json (Minimum Required)
+{
+  "name": "qr-attendance-system",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "cors": "^2.8.5"
+  }
+}
+
+
+Then you can run:
+
+npm start
+
+
+🔥 FINAL RESULT
+MongoDB running
+↓
+node server.js
+↓
+Open qr.html
+↓
+Scan using mobile
+↓
+Attendance stored in MongoDB
+---------------------------------------------------------------------------------------------------------------------------------
