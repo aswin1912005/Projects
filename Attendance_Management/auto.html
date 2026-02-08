@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Attendance</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #msg {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      background: #4e73df;
+      padding: 8px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    a:hover {
+      background: #2e59d9;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="card">
+  <h2>Auto Attendance</h2>
+  <p id="msg">Checking...</p>
+</div>
+
+<script>
+const token = localStorage.getItem("token");
+
+if (!token) {
+  msg.innerHTML =
+    "❌ First time login required<br><br>" +
+    "<a href='login.html'>Go to Login</a>";
+} else {
+  fetch("http://10.195.105.79:3000/auto", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token })
+  })
+  .then(res => res.json())
+  .then(data => msg.innerText = data.message);
+}
+</script>
+
+</body>
+</html>
